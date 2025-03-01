@@ -14,8 +14,8 @@ class InMemoryBankAccountRepository implements BankAccountRepository
 
     public function findById(string $id): BankAccount
     {
-        if (!isset($this->accounts[$id])) {
-            throw new Exception("Bank account not found.");
+        if (! isset($this->accounts[$id])) {
+            throw new Exception('Bank account not found.');
         }
         return $this->accounts[$id];
     }

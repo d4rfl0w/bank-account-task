@@ -9,5 +9,6 @@ use BankingSystem\Domain\Entity\BankAccount;
 interface BankAccountRepository
 {
     public function findById(string $id): BankAccount;
+
     public function save(BankAccount $account): void;
 }

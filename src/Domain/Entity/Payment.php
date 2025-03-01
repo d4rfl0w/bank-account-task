@@ -14,7 +14,7 @@ final class Payment
         private Currency $currency
     ) {
         if ($amount <= 0) {
-            throw new InvalidArgumentException("Amount must be positive.");
+            throw new InvalidArgumentException('Amount must be positive.');
         }
     }
 

@@ -32,7 +32,9 @@ Projekt został podzielony na **trzy główne warstwy** zgodnie z zasadami **DDD
 │   │── **BankAccountServiceTest.php**<br>
 │   │── **BankAccountTest.php**<br>
 │   │── **PaymentTest.php**<br>
-│── **composer.json**          # Konfiguracja Composer<br>
+│── **.gitignore**            # Ignorowane pliki<br>
+│── **composer.json**         # Konfiguracja Composer<br>
+│── **ecs.php**               # Projekt wykorzystuje Easy Coding Standard (ECS) do sprawdzania i automatycznego formatowania kodu.<br>
 │── **README.md**             # Dokumentacja projektu<br>
 
 

@@ -6,4 +6,6 @@ namespace BankingSystem\Domain\Exception;
 
 use Exception;
 
-class TransactionLimitExceededException extends Exception {}
+class TransactionLimitExceededException extends Exception
+{
+}

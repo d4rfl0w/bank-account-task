@@ -6,4 +6,6 @@ namespace BankingSystem\Domain\Exception;
 
 use Exception;
 
-class InsufficientBalanceException extends Exception {}
+class InsufficientBalanceException extends Exception
+{
+}

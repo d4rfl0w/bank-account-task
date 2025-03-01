@@ -9,8 +9,9 @@ use BankingSystem\Domain\Repository\BankAccountRepository;
 
 final class BankAccountService
 {
-    public function __construct(private BankAccountRepository $repository)
-    {
+    public function __construct(
+        private BankAccountRepository $repository
+    ) {
     }
 
     public function makePayment(string $accountId, Payment $payment): void
