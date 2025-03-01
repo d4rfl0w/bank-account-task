@@ -7,13 +7,10 @@ namespace BankingSystem\Application\Service;
 use BankingSystem\Domain\Entity\Payment;
 use BankingSystem\Domain\Repository\BankAccountRepository;
 
-class BankAccountService
+final class BankAccountService
 {
-    private BankAccountRepository $repository;
-
-    public function __construct(BankAccountRepository $repository)
+    public function __construct(private BankAccountRepository $repository)
     {
-        $this->repository = $repository;
     }
 
     public function makePayment(string $accountId, Payment $payment): void

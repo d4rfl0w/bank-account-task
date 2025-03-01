@@ -8,17 +8,15 @@ use InvalidArgumentException;
 
 class Currency
 {
-    private string $code;
-
     private const ALLOWED_CURRENCIES = ['USD', 'EUR', 'GBP', 'PLN'];
 
-    public function __construct(string $code)
+    public function __construct(private string $code)
     {
-        if (!in_array($code, self::ALLOWED_CURRENCIES)) {
-            throw new InvalidArgumentException("Invalid currency: $code");
+        if (!in_array($this->code, self::ALLOWED_CURRENCIES)) {
+            throw new InvalidArgumentException("Invalid currency: {$this->code}");
         }
-        $this->code = $code;
     }
+
 
     public function getCode(): string
     {

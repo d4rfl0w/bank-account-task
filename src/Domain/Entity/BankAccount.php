@@ -11,24 +11,24 @@ use DateTime;
 use InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 
-class BankAccount
+final class BankAccount
 {
     private string $id;
-    private Currency $currency;
-    private float $balance;
+
     private array $transactions = [];
     private const TRANSACTION_FEE_PERCENT = 0.005;
     private const DAILY_TRANSACTION_LIMIT = 3;
 
-    public function __construct(Currency $currency, float $initialBalance = 0.0)
-    {
+    public function __construct(
+        private Currency $currency,
+        private float $balance = 0.0
+    ) {
         $this->id = Uuid::uuid4()->toString();
-        if ($initialBalance < 0) {
+        if ($balance < 0) {
             throw new \InvalidArgumentException("Initial balance cannot be negative.");
         }
-        $this->currency = $currency;
-        $this->balance = $initialBalance;
     }
+
 
     public function getId(): string
     {
