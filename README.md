@@ -29,25 +29,24 @@ Projekt został podzielony na **trzy główne warstwy** zgodnie z zasadami **DDD
 │   │── **/Infrastructure**    # Warstwa infrastrukturalna (repozytoria)<br>
 │   │   │── **/Persistence**   # Implementacja repozytoriów (InMemory)<br>
 │── **/tests**                 # Testy jednostkowe PHPUnit<br>
+│   │── **BankAccountServiceTest.php**<br>
 │   │── **BankAccountTest.php**<br>
 │   │── **PaymentTest.php**<br>
 │── **composer.json**          # Konfiguracja Composer<br>
 │── **README.md**             # Dokumentacja projektu<br>
 
 
----
-
-## ✅ Testy jednostkowe
-
-Projekt zawiera **testy jednostkowe** napisane w **PHPUnit**, które sprawdzają poprawność implementacji.
-
-### 📌 Instalacja PHPUnit
-PHPUnit jest już skonfigurowany w `composer.json` jako zależność deweloperska. Jeśli nie masz jeszcze zainstalowanych pakietów, uruchom:
+## 📌 Instalacja zależności Composer
 ```sh
 composer install
 ```
+
+## ✅ Testy jednostkowe
+Projekt zawiera **testy jednostkowe** napisane w **PHPUnit**, które sprawdzają poprawność implementacji.
+
 ### 📌 Uruchomienie testów
 Aby uruchomić testy jednostkowe, wykonaj polecenie:
 ```sh
+vendor/bin/phpunit tests/BankAccountServiceTest.php
 vendor/bin/phpunit tests/BankAccountTest.php
 vendor/bin/phpunit tests/PaymentTest.php

@@ -22,6 +22,7 @@ class InMemoryBankAccountRepository implements BankAccountRepository
 
     public function save(BankAccount $account): void
     {
-        $this->accounts[spl_object_hash($account)] = $account;
+        // Poprawiamy klucz na ID zamiast spl_object_hash()
+        $this->accounts[$account->getId()] = $account;
     }
 }

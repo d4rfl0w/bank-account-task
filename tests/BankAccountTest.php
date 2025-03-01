@@ -56,7 +56,7 @@ class BankAccountTest extends TestCase
 
         $account->debit($payment);
 
-        $expectedBalance = 100.0 - (50.0 + (50.0 * 0.005)); // 50.25 USD
+        $expectedBalance = 100.0 - (50.0 + (50.0 * 0.005));
         $this->assertEquals($expectedBalance, $account->getBalance());
     }
 

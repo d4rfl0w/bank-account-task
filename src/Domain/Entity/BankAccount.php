@@ -9,9 +9,11 @@ use BankingSystem\Domain\Exception\InsufficientBalanceException;
 use BankingSystem\Domain\Exception\TransactionLimitExceededException;
 use DateTime;
 use InvalidArgumentException;
+use Ramsey\Uuid\Uuid;
 
 class BankAccount
 {
+    private string $id;
     private Currency $currency;
     private float $balance;
     private array $transactions = [];
@@ -20,11 +22,17 @@ class BankAccount
 
     public function __construct(Currency $currency, float $initialBalance = 0.0)
     {
+        $this->id = Uuid::uuid4()->toString();
         if ($initialBalance < 0) {
-            throw new InvalidArgumentException("Initial balance cannot be negative.");
+            throw new \InvalidArgumentException("Initial balance cannot be negative.");
         }
         $this->currency = $currency;
         $this->balance = $initialBalance;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     public function credit(Payment $payment): void
