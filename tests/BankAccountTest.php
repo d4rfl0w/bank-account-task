@@ -25,7 +25,7 @@ class BankAccountTest extends TestCase
 
     public function testCreateAccountWithNegativeBalanceThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new BankAccount(new Currency("USD"), -50.0);
     }
 
@@ -41,7 +41,7 @@ class BankAccountTest extends TestCase
 
     public function testCreditAccountWithDifferentCurrencyThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $account = new BankAccount(new Currency("USD"), 100.0);
         $payment = new Payment(50.0, new Currency("EUR"));
@@ -72,7 +72,7 @@ class BankAccountTest extends TestCase
 
     public function testDebitAccountWithDifferentCurrencyThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $account = new BankAccount(new Currency("USD"), 100.0);
         $payment = new Payment(50.0, new Currency("EUR"));
@@ -120,12 +120,12 @@ class BankAccountTest extends TestCase
         $this->assertEquals('credit', $history[0]['type']);
         $this->assertEquals(50.0, $history[0]['amount']);
         $this->assertEquals('debit', $history[1]['type']);
-        $this->assertEquals(30.15, $history[1]['amount']); // 30 + 0.5% fee
+        $this->assertEquals(30.15, $history[1]['amount']);
     }
 
     public function testInvalidPaymentAmountThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new Payment(-10.0, new Currency("USD"));
     }
 }

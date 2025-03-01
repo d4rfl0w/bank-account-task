@@ -18,20 +18,20 @@ class PaymentTest extends TestCase
 
     public function testCreatePaymentWithZeroAmountThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new Payment(0.0, new Currency("USD"));
     }
 
     public function testCreatePaymentWithNegativeAmountThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new Payment(-10.0, new Currency("USD"));
     }
 
     public function testCreatePaymentWithInvalidCurrencyThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
-        new Currency("ABC"); // Nieobsługiwana waluta
+        $this->expectException(InvalidArgumentException::class);
+        new Currency("ABC");
     }
 
     public function testCurrenciesAreEqual(): void

@@ -8,6 +8,7 @@ use BankingSystem\Domain\ValueObject\Currency;
 use BankingSystem\Domain\Exception\InsufficientBalanceException;
 use BankingSystem\Domain\Exception\TransactionLimitExceededException;
 use DateTime;
+use InvalidArgumentException;
 
 class BankAccount
 {
@@ -20,7 +21,7 @@ class BankAccount
     public function __construct(Currency $currency, float $initialBalance = 0.0)
     {
         if ($initialBalance < 0) {
-            throw new \InvalidArgumentException("Initial balance cannot be negative.");
+            throw new InvalidArgumentException("Initial balance cannot be negative.");
         }
         $this->currency = $currency;
         $this->balance = $initialBalance;
@@ -29,7 +30,7 @@ class BankAccount
     public function credit(Payment $payment): void
     {
         if (!$payment->getCurrency()->equals($this->currency)) {
-            throw new \InvalidArgumentException("Currency mismatch.");
+            throw new InvalidArgumentException("Currency mismatch.");
         }
         $this->balance += $payment->getAmount();
         $this->transactions[] = ['type' => 'credit', 'amount' => $payment->getAmount(), 'date' => new DateTime()];
@@ -38,7 +39,7 @@ class BankAccount
     public function debit(Payment $payment): void
     {
         if (!$payment->getCurrency()->equals($this->currency)) {
-            throw new \InvalidArgumentException("Currency mismatch.");
+            throw new InvalidArgumentException("Currency mismatch.");
         }
 
         $transactionFee = $payment->getAmount() * self::TRANSACTION_FEE_PERCENT;

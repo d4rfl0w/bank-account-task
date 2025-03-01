@@ -6,6 +6,7 @@ namespace BankingSystem\Infrastructure\Persistence;
 
 use BankingSystem\Domain\Entity\BankAccount;
 use BankingSystem\Domain\Repository\BankAccountRepository;
+use Exception;
 
 class InMemoryBankAccountRepository implements BankAccountRepository
 {
@@ -14,7 +15,7 @@ class InMemoryBankAccountRepository implements BankAccountRepository
     public function findById(string $id): BankAccount
     {
         if (!isset($this->accounts[$id])) {
-            throw new \Exception("Bank account not found.");
+            throw new Exception("Bank account not found.");
         }
         return $this->accounts[$id];
     }

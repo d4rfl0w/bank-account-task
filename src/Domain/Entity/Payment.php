@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BankingSystem\Domain\Entity;
 
 use BankingSystem\Domain\ValueObject\Currency;
+use InvalidArgumentException;
 
 class Payment
 {
@@ -14,7 +15,7 @@ class Payment
     public function __construct(float $amount, Currency $currency)
     {
         if ($amount <= 0) {
-            throw new \InvalidArgumentException("Amount must be positive.");
+            throw new InvalidArgumentException("Amount must be positive.");
         }
         $this->amount = $amount;
         $this->currency = $currency;
