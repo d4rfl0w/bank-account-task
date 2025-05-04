@@ -1,53 +1,54 @@
 # 🏦 Banking System - Domain-Driven Design (DDD)
 
-🚀 **Banking System** to przykładowa implementacja systemu bankowego zgodna z zasadami **Domain-Driven Design (DDD)** w języku PHP 8.3. Aplikacja pozwala na obsługę kont bankowych, wpłaty i wypłaty środków oraz uwzględnia opłaty transakcyjne i limity operacji.
+🚀 **Banking System** is a sample implementation of a banking system based on **Domain-Driven Design (DDD)** principles using PHP 8.3. The application supports bank account management, deposits and withdrawals, and takes into account transaction fees and operation limits.
 
 ---
 
-## 🏗️ Architektura projektu i podejście DDD
+## 🏗️ Project Architecture and DDD Approach
 
-Projekt został zaprojektowany zgodnie z zasadami **Domain-Driven Design (DDD)**, co oznacza, że kod został podzielony na **warstwy**:
+The project is designed following **Domain-Driven Design (DDD)** principles, meaning the code is divided into **layers**:
 
-- **Domain** (logika biznesowa, encje, wyjątki, repozytoria)
-- **Application** (serwisy, przypadki użycia)
-- **Infrastructure** (repozytoria, implementacje pamięciowe)
+- **Domain** (business logic, entities, exceptions, repositories)
+- **Application** (services, use cases)
+- **Infrastructure** (repositories, in-memory implementations)
 
-Aplikację można było zapisać w **mniejszej liczbie plików**. Jednak celem było **pokazanie zasad DDD**.<br>
-Projekt **pomija wzorzec CQRS**, aby nie komplikować struktury – cała logika jest obsługiwana w **BankAccountService** bez oddzielania komend i zapytań.
+The application could have been written in **fewer files**, but the goal was to **demonstrate DDD principles**.<br>
+The project **does not include the CQRS pattern** in order to keep the structure simple – all logic is handled in **BankAccountService** without separating commands and queries.
 
-## 📂 Struktura katalogów
-Projekt został podzielony na **trzy główne warstwy** zgodnie z zasadami **DDD**:
+## 📂 Directory Structure
+
+The project is divided into **three main layers** according to **DDD** principles:
 
 │── **/src**<br>
-│   │── **/Domain**            # Warstwa domenowa (logika biznesowa)<br>
-│   │   │── **/Entity**        # Główne encje (BankAccount, Payment)<br>
-│   │   │── **/ValueObject**   # Value Objects (Currency)<br>
-│   │   │── **/Exception**     # Definicje wyjątków domenowych<br>
-│   │   │── **/Repository**    # Abstrakcyjne repozytoria<br>
-│   │── **/Application**       # Warstwa aplikacyjna (serwisy)<br>
-│   │   │── **/Service**       # Serwisy realizujące use case’y<br>
-│   │── **/Infrastructure**    # Warstwa infrastrukturalna (repozytoria)<br>
-│   │   │── **/Persistence**   # Implementacja repozytoriów (InMemory)<br>
-│── **/tests**                 # Testy jednostkowe PHPUnit<br>
+│   │── **/Domain**            # Domain layer (business logic)<br>
+│   │   │── **/Entity**        # Core entities (BankAccount, Payment)<br>
+│   │   │── **/ValueObject**   # Value objects (Currency)<br>
+│   │   │── **/Exception**     # Domain exception definitions<br>
+│   │   │── **/Repository**    # Abstract repository interfaces<br>
+│   │── **/Application**       # Application layer (services)<br>
+│   │   │── **/Service**       # Services implementing use cases<br>
+│   │── **/Infrastructure**    # Infrastructure layer (repositories)<br>
+│   │   │── **/Persistence**   # Repository implementations (InMemory)<br>
+│── **/tests**                 # PHPUnit unit tests<br>
 │   │── **BankAccountServiceTest.php**<br>
 │   │── **BankAccountTest.php**<br>
 │   │── **PaymentTest.php**<br>
-│── **.gitignore**            # Ignorowane pliki<br>
-│── **composer.json**         # Konfiguracja Composer<br>
-│── **ecs.php**               # Projekt wykorzystuje Easy Coding Standard (ECS) do sprawdzania i automatycznego formatowania kodu.<br>
-│── **README.md**             # Dokumentacja projektu<br>
+│── **.gitignore**            # Git ignored files<br>
+│── **composer.json**         # Composer configuration<br>
+│── **ecs.php**               # Project uses Easy Coding Standard (ECS) for code style checks and automatic formatting<br>
+│── **README.md**             # Project documentation<br>
 
+## 📌 Install Composer Dependencies
 
-## 📌 Instalacja zależności Composer
 ```sh
 composer install
 ```
 
-## ✅ Testy jednostkowe
-Projekt zawiera **testy jednostkowe** napisane w **PHPUnit**, które sprawdzają poprawność implementacji.
+## ✅ Unit Tests
+The project includes **unit tests** written in **PHPUnit**, which verify the correctness of the implementation.
 
-### 📌 Uruchomienie testów
-Aby uruchomić testy jednostkowe, wykonaj polecenie:
+### 📌 Running the Tests
+To run the unit tests, execute the following commands:
 ```sh
 vendor/bin/phpunit tests/BankAccountServiceTest.php
 vendor/bin/phpunit tests/BankAccountTest.php
